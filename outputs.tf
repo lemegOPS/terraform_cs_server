@@ -5,12 +5,11 @@ output "bucket_name" {
 }
 
 #----------Server output----------#
-output "server_info" {
+output "server_ip" {
   value       = module.aws-instance.server_info
-  description = "Show server info: ID, Instance type, AMI, SSH key name, External IP ore DNS, Internal IP Project, Owner, Project, Env"
+  description = "Show server IP"
 }
 
-#----------VPC output----------#
-output "vpc_id" {
-  value = module.aws-vpc.vpc_id
+output "server_port" {
+  value = module.aws-security-group.game_port
 }

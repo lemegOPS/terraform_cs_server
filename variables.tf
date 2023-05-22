@@ -15,10 +15,10 @@ variable "region" {
 variable "tags" {
   type = map(any)
   default = {
-    Owner       = "Alex"
-    Project     = "Games"
-    Name        = "CS1.6_server"
-    Size        = "small"
+    Owner   = "Alex"
+    Project = "Games"
+    Name    = "CS1.6_server"
+    Size    = "small"
   }
   description = "Use this map of tags. Use to generate bucket name, names or resources, tags. See global_name in module"
 }
