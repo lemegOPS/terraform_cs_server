@@ -12,6 +12,7 @@ module "aws-instance" {
   vpc_security_group = module.aws-security-group.security_group_id
   global_name        = local.global_name
   private_key_name   = module.aws-private-key.private_key_name
+  sec_group          = module.aws-security-group.game_port
 }
 
 
