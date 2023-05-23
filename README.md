@@ -1,19 +1,21 @@
 # Terraform Counter Strike 1.6
+### Terraform script for installing counter strike 1.6 server in docker.
 
-## Terraform script for installing counter strike 1.6 server in docker.
 
 ## How it works?
-Terraform script installs instance in avs. Docker is installed on the instance and the Conter Strike 1.6 server is launched in a container. The container is already ready and take it from [here](https://hub.docker.com/r/febley/counter-strike_server/)
+Terraform script installs instance in aws. Docker is installed on the instance and the Conter Strike 1.6 server is launched in a container. The container is already ready and take it from [here](https://hub.docker.com/r/febley/counter-strike_server/)
 
 ### Important!
 On macbook with M1\M2 cpu ***templatefile*** in ***userdata*** in ./modules/aws-instance/instance.tf may not work.
+
+
 
 ### Terraform script structure:
 ```
 .
 ├── README.md
-├── main.tf - _main file to run_
-├── modules - _directory with modules_
+├── main.tf - main file to run
+├── modules - directory with modules
 │   ├── aws-instance 
 │   │   ├── instance.tf
 │   │   ├── outputs.tf
@@ -33,14 +35,14 @@ On macbook with M1\M2 cpu ***templatefile*** in ***userdata*** in ./modules/aws-
 │   └── aws-vpc
 │       ├── outputs.tf
 │       └── vpc.tf
-├── outputs.tf - _outputs with server address, server port and bucket name for states_
-├── provider.tf - _providers here_
-├── userdata.tpl - _script with docker and server installation in a container_
-└── variables.tf - _main variable file_
+├── outputs.tf - outputs with server address, server port and bucket name for states
+├── provider.tf - providers here
+├── userdata.tpl - script with docker and server installation in a container
+└── variables.tf - main variable file
 ```
 
 
-To do this, you need to install additional packages:
+** To do this, you need to install additional packages:**
 ```bash
 brew install kreuzwerker/taps/m1-terraform-provider-helper
 m1-terraform-provider-helper activate
@@ -48,7 +50,7 @@ m1-terraform-provider-helper install hashicorp/template -v v2.2.0
 ```
 
 
-To run scripts you need:
+**To run scripts you need:**
 ```bash
 git clone git@github.com:lemegOPS/terraform_cs_server.git
 cd terraform_cs_server
@@ -57,7 +59,7 @@ terraform apply
 ```
 
 
-After installing the server, the script will give output:
+**After installing the server, the script will give output:**
 
 **Example**:
 > bucket_name = "games-small-cs1.6-server-tfstate-x9uq69"
@@ -69,14 +71,14 @@ After installing the server, the script will give output:
 > server_ip = "some_uplic_ip"
 
 
-After successful creation of the server, a private ssh key with the name of the pattern *Project_Size_Name*_SSH-key.pem will appear in the directory with scripts. To connect to the server, use the command:
+**After successful creation of the server, a private ssh key with the name of the pattern *Project_Size_Name*_SSH-key.pem will appear in the directory with scripts. To connect to the server, use the command:**
 ```bash
 ssh -i you_generated_ssh_key.pem ec2-user@ip_from_output
 ```
 
 
-Everything is controlled from the variables.tf file in the root module.
-Below is a description of the variables:
+**Everything is controlled from the variables.tf file in the root module.**
+**Below is a description of the variables:**
 |Variable Name|Variable Value|
 |-------------|--------------|
 |variable "profile"|Value from ~/.aws/config. [How_to_config](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html#getting-started-quickstart-new-command)|
