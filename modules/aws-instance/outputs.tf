@@ -1,7 +1,3 @@
-output "server_info" {
+output "server_public_ip" {
   value = aws_instance.server.public_ip
-}
-
-output "servers" {
-  value = aws_instance.server.id
 }

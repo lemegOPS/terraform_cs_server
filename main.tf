@@ -5,14 +5,14 @@ locals {
 }
 
 module "aws-instance" {
-  source             = "./modules/aws-instance"
-  instance_type      = var.instance_type
-  tags               = var.tags
-  ami_image          = var.ami_image
-  vpc_security_group = module.aws-security-group.security_group_id
-  global_name        = local.global_name
-  private_key_name   = module.aws-private-key.private_key_name
-  sec_group          = module.aws-security-group.game_port
+  source              = "./modules/aws-instance"
+  instance_type       = var.instance_type
+  tags                = var.tags
+  ami_image           = var.ami_image
+  vpc_security_group  = module.aws-security-group.security_group_id
+  global_name         = local.global_name
+  private_key_name    = module.aws-private-key.private_key_name
+  sec_group_game_port = module.aws-security-group.sec_group_game_port
 }
 
 

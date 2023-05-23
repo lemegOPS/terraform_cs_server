@@ -34,7 +34,7 @@ variable "instance_type" {
     medium = "t2.small"
     big    = "t2.2xlarge"
   }
-  description = "Use this map of the instance type. Use to make our env more flexible"
+  description = "Use this map of the instance type. Depends on variable tags/Size"
 }
 
 variable "ami_image" {
@@ -68,6 +68,6 @@ variable "sec_group" {
     external = "0.0.0.0/0"
     internal = "10.1.1.0/30"
   }
-  description = "Ports, subnets for Security group."
+  description = "Ports, subnets for Security group. Also UDP port forwards in userdata.tpl"
 }
 

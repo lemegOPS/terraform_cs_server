@@ -6,10 +6,14 @@ output "bucket_name" {
 
 #----------Server output----------#
 output "server_ip" {
-  value       = module.aws-instance.server_info
+  value       = module.aws-instance.server_public_ip
   description = "Show server IP"
 }
 
-output "server_port" {
-  value = module.aws-security-group.game_port
+output "game_port" {
+  value = module.aws-security-group.sec_group_game_port
+}
+
+output "private_key_name" {
+  value = module.aws-private-key.private_key_name
 }
