@@ -1,13 +1,21 @@
 # Terraform Counter Strike 1.6
 ### Terraform script for installing counter strike 1.6 server in docker.
 
-
+---
 ## How it works?
 Terraform script installs instance in aws. Docker is installed on the instance and the Conter Strike 1.6 server is launched in a container. The container is already ready and take it from [here](https://hub.docker.com/r/febley/counter-strike_server/)
-
+---
 ### Important!
 On macbook with M1\M2 cpu ***templatefile*** in ***userdata*** in ./modules/aws-instance/instance.tf may not work.
 
+
+** To do this, you need to install additional packages:**
+```bash
+brew install kreuzwerker/taps/m1-terraform-provider-helper
+m1-terraform-provider-helper activate
+m1-terraform-provider-helper install hashicorp/template -v v2.2.0
+```
+---
 
 
 ### Terraform script structure:
@@ -42,14 +50,7 @@ On macbook with M1\M2 cpu ***templatefile*** in ***userdata*** in ./modules/aws-
 ```
 
 
-** To do this, you need to install additional packages:**
-```bash
-brew install kreuzwerker/taps/m1-terraform-provider-helper
-m1-terraform-provider-helper activate
-m1-terraform-provider-helper install hashicorp/template -v v2.2.0
-```
-
-
+---
 **To run scripts you need:**
 ```bash
 git clone git@github.com:lemegOPS/terraform_cs_server.git
@@ -59,22 +60,22 @@ terraform apply
 ```
 
 
+---
 **After installing the server, the script will give output:**
 
 **Example**:
-> bucket_name = "games-small-cs1.6-server-tfstate-x9uq69"
-
-> game_port = "27015"
-
-> private_key_name = "Games_small_CS1.6_server_SSH-key"
-
+> bucket_name = "games-small-cs1.6-server-tfstate-x9uq69"\
+> game_port = "27015"\
+> private_key_name = "Games_small_CS1.6_server_SSH-key"\
 > server_ip = "some_uplic_ip"
 
 
+---
 **After successful creation of the server, a private ssh key with the name of the pattern *Project_Size_Name*_SSH-key.pem will appear in the directory with scripts. To connect to the server, use the command:**
 ```bash
 ssh -i you_generated_ssh_key.pem ec2-user@ip_from_output
 ```
+---
 
 
 **Everything is controlled from the variables.tf file in the root module.**
