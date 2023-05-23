@@ -3,13 +3,15 @@
 
 ---
 ## How it works?
+
 Terraform script installs instance in aws. Docker is installed on the instance and the Conter Strike 1.6 server is launched in a container. The container is already ready and take it from [here](https://hub.docker.com/r/febley/counter-strike_server/)
 ---
+
 ### Important!
 On macbook with M1\M2 cpu ***templatefile*** in ***userdata*** in ./modules/aws-instance/instance.tf may not work.
 
 
-** To do this, you need to install additional packages:**
+**To do this, you need to install additional packages:**
 ```bash
 brew install kreuzwerker/taps/m1-terraform-provider-helper
 m1-terraform-provider-helper activate
